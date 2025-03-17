@@ -11,3 +11,12 @@ def test_UIChecks(page:Page):
      page.on("dialog", lambda dialog:dialog.accept())
      #page.get_by_role("alert", name="Confirm").click()
      page.get_by_role("button", name="Confirm").click()
+
+     #hover
+     page.locator("#mousehover").hover()
+     page.get_by_role("link", name="Top").click()
+
+     #Handling iFrame
+     pageFrame = page.frame_locator("#courses-iframe")
+     pageFrame.get_by_role("link", name="All Access Plan").click()
+     expect(pageFrame.locator("body")).to_contain_text("Happy Subsciber")
